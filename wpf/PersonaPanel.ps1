@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Xaml
 $here        = Split-Path -Parent $MyInvocation.MyCommand.Path
 $appRoot     = Split-Path -Parent $here
 $personaFile = Join-Path $appRoot 'persona\persona.json'
-$portrait    = Join-Path $appRoot 'assets\siqu-portrait-512.png'
+$portrait    = Join-Path $appRoot 'characters\si\images\portrait.png'  # 角色包里的立绘
 $siquHome    = if ($env:SIQU_HOME) { $env:SIQU_HOME } else { Join-Path $env:USERPROFILE '.siqu' }
 $stateFile   = Join-Path $siquHome 'persona-state.json'
 
@@ -268,6 +268,7 @@ if (Test-Path $rolesFile) {
     }
   } catch { }
 }
+if (-not (Test-Path $portrait) -and $script:stateImages.ContainsKey('idle')) { $portrait = $script:stateImages['idle'] }
 if (-not $script:stateImages.ContainsKey('idle') -and (Test-Path $portrait)) {
   $script:stateImages['idle'] = $portrait
 }

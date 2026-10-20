@@ -1,11 +1,17 @@
 # ---- 不含版权素材：使用者自备 ----
 # 立绘与语音属于各自原作者，不随仓库分发
+
+
 assets/siqu-*.png
 assets/audio/*
+assets/siqu.ico
 characters/*/images/*
 characters/*/audio/*
 # 例外：占位角色图是程序生成的，可以分发
 !characters/placeholder/images/*.png
+!characters/si/images/*.png
+!characters/si/audio/*
+!characters/si/*.ico
 
 # ---- 本地状态 ----
 roles/active.txt
@@ -44,4 +50,3 @@ test/**/questions-state.json
 test/**/schedule-state.json
 test/crash/*.exe
 test/devsim/*.exe
-assets/siqu.ico

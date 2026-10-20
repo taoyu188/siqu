@@ -3,31 +3,32 @@
     "_comment":  "角色图库。仿 dsh-whale-widget 的 whale-roles/roles.json 机制：",
     "_comment2":  "同一套代码可以装多个角色，每个角色按状态给不同图；缺图自动回退到 idle。",
     "_comment3":  "路径相对 siqu 目录。以后画了新表情，只要在这里加一行，不用改代码。",
-    "defaultRole":  "placeholder",
+    "defaultRole":  "si",
     "roles":  [
                   {
                       "id":  "si",
                       "name":  "祀",
                       "scale":  1,
                       "images":  {
-                                     "idle":  "assets/siqu-idle.png",
-                                     "happy":  "assets/siqu-happy.png",
-                                     "taunt":  "assets/siqu-taunt.png",
-                                     "confused":  "assets/siqu-confused.png",
-                                     "embarrassed":  "assets/siqu-embarrassed.png",
-                                     "jealous":  "assets/siqu-jealous.png",
-                                     "pout":  "assets/siqu-pout.png",
-                                     "sleep":  "assets/siqu-sleep.png"
+                                     "idle":  "characters/si/images/idle.png",
+                                     "happy":  "characters/si/images/happy.png",
+                                     "taunt":  "characters/si/images/taunt.png",
+                                     "confused":  "characters/si/images/confused.png",
+                                     "embarrassed":  "characters/si/images/embarrassed.png",
+                                     "jealous":  "characters/si/images/jealous.png",
+                                     "pout":  "characters/si/images/pout.png",
+                                     "sleep":  "characters/si/images/sleep.png"
                                  },
                       "audio":  {
                                     "click":  {
-                                                  "file":  "assets/audio/daigo.m4a",
+                                                  "file":  "characters/si/audio/voice.m4a",
                                                   "volume":  0.85,
                                                   "triggerText":  "呆货"
                                               }
                                 },
                       "persona":  "persona/persona.json",
-                      "_note":  "作者自用角色，立绘与语音不进仓库（版权原因）。想恢复就把 8 张图放回 assets/ 或用自己的角色包。"
+                      "_note":  "作者自用角色。立绘/语音来源见 NOTICE.md。",
+                      "portrait":  "characters/si/images/portrait.png"
                   },
                   {
                       "id":  "placeholder",
