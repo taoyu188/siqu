@@ -1,0 +1,47 @@
+# ---- 不含版权素材：使用者自备 ----
+# 立绘与语音属于各自原作者，不随仓库分发
+assets/siqu-*.png
+assets/audio/*
+characters/*/images/*
+characters/*/audio/*
+# 例外：占位角色图是程序生成的，可以分发
+!characters/placeholder/images/*.png
+
+# ---- 本地状态 ----
+roles/active.txt
+*.bak
+
+# ---- 教材（有版权，且体积大）----
+textbook/
+
+# ---- 运行时产物 / 测试截图 ----
+test/*.png
+test/pyhome/
+test/book/
+test/*.log
+*.log
+*.o
+*.obj
+
+# ---- 旧版本残留 ----
+app/
+
+# ---- 系统与编辑器 ----
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+node_modules/
+
+# ---- 用户凭据（绝不要提交）----
+skland.json
+*.env
+.env*
+
+# ---- 测试过程中产生的状态文件 / 二进制 ----
+test/**/persona-state.json
+test/**/questions-state.json
+test/**/schedule-state.json
+test/crash/*.exe
+test/devsim/*.exe
+assets/siqu.ico
