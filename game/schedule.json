@@ -1,0 +1,74 @@
+﻿{
+    "_comment":  "终末地日程配置。改这里就行，不用动代码。_verify=true 表示该数值待你确认。",
+    "game":  "明日方舟：终末地",
+    "server":  {
+                   "note":  "国服/B服 重置时间一致，按本地时间计算",
+                   "resetHour":  4,
+                   "_verify":  false,
+                   "source":  "官方 2026-03-25 起生效：每日 04:00 刷新，理智补给邮件 04:00 发放"
+               },
+    "weekly":  {
+                   "resetWeekday":  1,
+                   "resetHour":  4,
+                   "_verify":  false,
+                   "note":  "每周重置（1=周一）。若实际不是周一 04:00，改 resetWeekday"
+               },
+    "stamina":  {
+                    "unit":  "理智",
+                    "max":  360,
+                    "recoverMinutes":  7.2,
+                    "_verify":  false,
+                    "note":  "来源：森空岛接口实测（curStamina/maxStamina/maxTs 反推），360 上限、7.2 分钟/点"
+                },
+    "reminders":  {
+                      "beforeResetMinutes":  60,
+                      "staminaWarnPercent":  80,
+                      "enabled":  true
+                  },
+    "tasks":  {
+                  "daily":  [
+                                {
+                                    "id":  "d2",
+                                    "name":  "日常委托",
+                                    "hint":  "每日委托，攒每日活跃度"
+                                },
+                                {
+                                    "id":  "d3",
+                                    "name":  "基建收菜",
+                                    "hint":  "产线/制造站产物收取"
+                                },
+                                {
+                                    "id":  "d5",
+                                    "name":  "刷体力",
+                                    "hint":  "把理智花在需要的关卡上"
+                                }
+                            ],
+                  "weekly":  [
+                                 {
+                                     "id":  "w1",
+                                     "name":  "周常委托",
+                                     "hint":  "本周内完成，周一 04:00 重置"
+                                 },
+                                 {
+                                     "id":  "w2",
+                                     "name":  "周本/周奖励",
+                                     "hint":  "每周限次的高收益关卡"
+                                 }
+                             ]
+              },
+    "lines":  {
+                  "beforeReset":  [
+                                      "……还有 {minutes} 分钟就重置了。{pending}",
+                                      "马上 04:00 了。{pending} 你自己看着办。",
+                                      "重置前 {minutes} 分钟。{pending}"
+                                  ],
+                  "staminaFull":  [
+                                      "理智快满了（{current}/{max}），溢出就浪费了。",
+                                      "你在浪费理智。{current}/{max}。"
+                                  ],
+                  "allDone":  [
+                                  "今天的都做完了。……难得。",
+                                  "检查过了，没有漏的。"
+                              ]
+              }
+}

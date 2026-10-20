@@ -1,0 +1,96 @@
+﻿{
+    "version":  2,
+    "_comment":  "角色图库。仿 dsh-whale-widget 的 whale-roles/roles.json 机制：",
+    "_comment2":  "同一套代码可以装多个角色，每个角色按状态给不同图；缺图自动回退到 idle。",
+    "_comment3":  "路径相对 siqu 目录。以后画了新表情，只要在这里加一行，不用改代码。",
+    "defaultRole":  "placeholder",
+    "roles":  [
+                  {
+                      "id":  "si",
+                      "name":  "祀",
+                      "scale":  1,
+                      "images":  {
+                                     "idle":  "assets/siqu-idle.png",
+                                     "happy":  "assets/siqu-happy.png",
+                                     "taunt":  "assets/siqu-taunt.png",
+                                     "confused":  "assets/siqu-confused.png",
+                                     "embarrassed":  "assets/siqu-embarrassed.png",
+                                     "jealous":  "assets/siqu-jealous.png",
+                                     "pout":  "assets/siqu-pout.png",
+                                     "sleep":  "assets/siqu-sleep.png"
+                                 },
+                      "audio":  {
+                                    "click":  {
+                                                  "file":  "assets/audio/daigo.m4a",
+                                                  "volume":  0.85,
+                                                  "triggerText":  "呆货"
+                                              }
+                                },
+                      "persona":  "persona/persona.json",
+                      "_note":  "作者自用角色，立绘与语音不进仓库（版权原因）。想恢复就把 8 张图放回 assets/ 或用自己的角色包。"
+                  },
+                  {
+                      "id":  "placeholder",
+                      "name":  "占位小生物",
+                      "scale":  1,
+                      "images":  {
+                                     "idle":  "characters/placeholder/images/idle.png",
+                                     "happy":  "characters/placeholder/images/happy.png",
+                                     "taunt":  "characters/placeholder/images/taunt.png",
+                                     "confused":  "characters/placeholder/images/confused.png",
+                                     "embarrassed":  "characters/placeholder/images/embarrassed.png",
+                                     "jealous":  "characters/placeholder/images/jealous.png",
+                                     "pout":  "characters/placeholder/images/pout.png",
+                                     "sleep":  "characters/placeholder/images/sleep.png"
+                                 },
+                      "audio":  {
+                                    "click":  null
+                                },
+                      "persona":  "persona/persona.json"
+                  }
+              ],
+    "_states":  {
+                    "_comment":  "状态的表现参数。换立绘之前，先用这些把差异做出来。",
+                    "idle":  {
+                                 "describe":  "待机：缓慢浮动，正常亮度",
+                                 "scale":  1,
+                                 "rotate":  0,
+                                 "dim":  1,
+                                 "floatAmp":  3.2,
+                                 "floatSpeed":  1
+                             },
+                    "happy":  {
+                                  "describe":  "高兴：弹得更欢，微微放大变亮",
+                                  "scale":  1.06,
+                                  "rotate":  0,
+                                  "dim":  1,
+                                  "floatAmp":  7,
+                                  "floatSpeed":  2
+                              },
+                    "taunt":  {
+                                  "describe":  "嫌弃：歪头 + 抖动 + 稍微缩小",
+                                  "scale":  0.97,
+                                  "rotate":  -7,
+                                  "dim":  1,
+                                  "floatAmp":  2,
+                                  "floatSpeed":  1.4
+                              },
+                    "confused":  {
+                                     "describe":  "困惑：反方向歪头，动作变慢",
+                                     "scale":  1,
+                                     "rotate":  6,
+                                     "dim":  0.98,
+                                     "floatAmp":  2.5,
+                                     "floatSpeed":  0.6
+                                 },
+                    "sleep":  {
+                                  "describe":  "犯困：下沉、变暗、冒 z z z",
+                                  "scale":  0.98,
+                                  "rotate":  3,
+                                  "dim":  0.72,
+                                  "floatAmp":  1.2,
+                                  "floatSpeed":  0.35
+                              }
+                },
+    "_comment4":  "audio: 该角色的语音；click 是点击时播放（可选 triggerText 限定只在台词含该词时播）。persona: 台词库路径。"
+}

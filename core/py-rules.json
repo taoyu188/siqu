@@ -1,0 +1,139 @@
+{
+  "_comment": "Python 报错规则。pattern 是正则，对整段 traceback 匹配（忽略大小写）。taunt 是祀说的话。",
+  "rules": [
+    {
+      "id": "py-name-error",
+      "pattern": "NameError: name '([^']+)' is not defined",
+      "title": "用了一个还没定义的变量",
+      "why": "Python 是顺序执行的，名字必须先赋值才能用。常见原因：拼错了变量名、或者变量定义在 if/函数里面没执行到。",
+      "fix": "检查名字拼写；确认赋值语句在这行之前、而且在同一条执行路径上。",
+      "taunt": "这个变量不存在。你自己造的？"
+    },
+    {
+      "id": "py-unbound-local",
+      "pattern": "UnboundLocalError: local variable '([^']+)' referenced before assignment",
+      "title": "函数里先用了变量，后面才赋值",
+      "why": "只要函数体里出现过 `x = ...`，Python 就把 x 当局部变量。在赋值之前读它就会报这个。",
+      "fix": "把赋值提到使用之前；或者在函数开头先给初值；真想改外面的变量就加 global / nonlocal。",
+      "taunt": "局部变量还没赋值就用了。顺序，懂吗。"
+    },
+    {
+      "id": "py-concat-str-int",
+      "pattern": "can only concatenate str \\(not \"(\\w+)\"\\) to str",
+      "title": "字符串和数字直接相加",
+      "why": "Python 不会自动把数字转成字符串。`\"a\" + 1` 是类型错误。",
+      "fix": "用 f-string：f\"值={x}\"；或者 str(x) 先转换。",
+      "taunt": "字符串加数字？你先转类型。"
+    },
+    {
+      "id": "py-operand-unsupported",
+      "pattern": "unsupported operand type\\(s\\) for ([+\\-*/%]+): '(\\w+)' and '(\\w+)'",
+      "title": "两个不同类型的值做运算",
+      "why": "C 里会自动转换，Python 不会。int 和 str、int 和 None 都不能直接算。",
+      "fix": "先把两边转成同一类型，比如 int(input()) 读数字、float() 做除法。",
+      "taunt": "类型不一样还硬算。先转。"
+    },
+    {
+      "id": "py-indentation",
+      "pattern": "IndentationError: (unexpected indent|expected an indented block)",
+      "title": "缩进不对",
+      "why": "Python 用缩进表示代码块。多一个空格、少一个空格、Tab 和空格混用都会报错。",
+      "fix": "统一用 4 个空格，别用 Tab；冒号后面必须有缩进。",
+      "taunt": "缩进。你按了几次空格？"
+    },
+    {
+      "id": "py-syntax",
+      "pattern": "SyntaxError: (invalid syntax|unexpected EOF|invalid character)",
+      "title": "语法错误",
+      "why": "常见于：少写冒号、括号没闭合、中英文标点混用（比如用了中文引号或全角括号）。",
+      "fix": "看报错行和它上一行；检查括号配对和冒号；把中文标点换成英文。",
+      "taunt": "语法都不对。看上一行。"
+    },
+    {
+      "id": "py-index-error",
+      "pattern": "IndexError: (list|tuple|string) index out of range",
+      "title": "下标越界",
+      "why": "列表/字符串长度为 n 时，合法下标是 0..n-1。用 len 当下标是最常见的原因。",
+      "fix": "检查下标范围，用 -1 取最后一个，或先判断 len。",
+      "taunt": "越界了。跟 C 数组一个毛病。"
+    },
+    {
+      "id": "py-key-error",
+      "pattern": "KeyError: '?([^'\\n]*)'?",
+      "title": "字典里没有这个键",
+      "why": "用 d[k] 取值时键必须存在，否则报 KeyError。",
+      "fix": "用 d.get(k) 取（不存在返回 None），或者先 if k in d 判断。",
+      "taunt": "这个键不存在。查一下字典里有什么。"
+    },
+    {
+      "id": "py-zero-division",
+      "pattern": "ZeroDivisionError: (float )?division by zero",
+      "title": "除以零",
+      "why": "分母是 0。常见于用求和结果做分母、或者循环变量初值忘了改。",
+      "fix": "除法前判断分母是否为 0。",
+      "taunt": "又除以零。上次不是说过。"
+    },
+    {
+      "id": "py-module-not-found",
+      "pattern": "ModuleNotFoundError: No module named '([^']+)'",
+      "title": "没装这个库",
+      "why": "import 的模块不在当前 Python 环境里。可能装到了别的版本，或者根本没装。",
+      "fix": "用 py -m pip install <名字> 安装；注意别和标准库同名（比如自己写了个 random.py）。",
+      "taunt": "这个库没装。py -m pip install 一下。"
+    },
+    {
+      "id": "py-int-convert",
+      "pattern": "ValueError: invalid literal for int\\(\\) with base 10: '([^']*)'",
+      "title": "这个字符串转不成整数",
+      "why": "int() 只接受纯数字字符串。输入里有字母、空格、小数点或全角数字都会失败。",
+      "fix": "先用 .strip() 去空格；要小数用 float()；读多个数用 split()。",
+      "taunt": "这不是数字。你自己输的什么。"
+    },
+    {
+      "id": "py-recursion",
+      "pattern": "RecursionError: maximum recursion depth exceeded",
+      "title": "递归太深",
+      "why": "递归没有终止条件，或者终止条件永远到不了。Python 默认递归上限约 1000 层。",
+      "fix": "检查终止条件；确认每次递归都在向终止条件靠近。",
+      "taunt": "递归停不下来。跟 C 那个栈溢出一样。"
+    },
+    {
+      "id": "py-file-not-found",
+      "pattern": "FileNotFoundError: .*No such file or directory: '([^']+)'",
+      "title": "文件找不到",
+      "why": "路径不对，或者文件不在当前工作目录。相对路径是相对于「你运行命令时所在的目录」。",
+      "fix": "用绝对路径，或者先 os.path.exists 检查；确认文件名和后缀。",
+      "taunt": "文件不存在。路径写对了吗。"
+    },
+    {
+      "id": "py-none-type",
+      "pattern": "AttributeError: 'NoneType' object has no attribute '([^']+)'",
+      "title": "在 None 上取属性",
+      "why": "函数没有 return 时返回 None。把它的返回值当对象用就会报这个。",
+      "fix": "检查被调用的函数有没有 return；或者先判断 is None。",
+      "taunt": "None 上面没有这个属性。你函数到底返回了什么。"
+    },
+    {
+      "id": "py-str-no-append",
+      "pattern": "AttributeError: 'str' object has no attribute 'append'",
+      "title": "字符串没有 append",
+      "why": "append 是 list 的方法。字符串不可变，拼接要用 + 或 join。",
+      "fix": "用列表存再 ''.join()；或者直接 s += '片段'。",
+      "taunt": "字符串不能 append。那是列表的东西。"
+    },
+    {
+      "id": "py-missing-arg",
+      "pattern": "TypeError: ([\\w_]+)\\(\\) missing (\\d+) required positional argument",
+      "title": "函数少传了参数",
+      "why": "定义的参数个数和调用时给的对不上。",
+      "fix": "对照函数定义补上参数，或者给参数设默认值。",
+      "taunt": "参数没给够。数一数。"
+    }
+  ],
+  "generic": {
+    "title": "这个 Python 错误我还没见过",
+    "why": "看报错最后一行，那是异常类型和原因；往上看最后一个 File 行，那是出错的位置。",
+    "fix": "从最后一个 File 行开始改，一行一行往回查。",
+    "taunt": "这个错我没见过……先记下来了。"
+  }
+}

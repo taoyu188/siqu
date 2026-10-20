@@ -1,0 +1,1504 @@
+{
+  "version": 1,
+  "_comment": "题库。示例题供 MVP 验证流程用；之后从课本生成的题会追加进来。",
+  "questions": [
+    {
+      "id": "q001",
+      "topic": "运算符",
+      "q": "表达式 7 / 2 的值是？",
+      "options": [
+        "3",
+        "3.5",
+        "4",
+        "编译错误"
+      ],
+      "answer": 0,
+      "explain": "两个 int 相除，结果仍是 int，小数部分直接截断：7/2 = 3。",
+      "type": "mcq"
+    },
+    {
+      "id": "q002",
+      "topic": "运算符",
+      "q": "表达式 7 % 2 的值是？",
+      "options": [
+        "1",
+        "3",
+        "3.5",
+        "0"
+      ],
+      "answer": 0,
+      "explain": "% 是取余，7 除以 2 余 1。",
+      "type": "mcq"
+    },
+    {
+      "id": "q003",
+      "topic": "格式化输出",
+      "q": "要输出一个 double 变量 d，printf 的格式符应该用？",
+      "options": [
+        "%d",
+        "%f",
+        "%c",
+        "%s"
+      ],
+      "answer": 1,
+      "explain": "double 用 %f（或用 %lf 也行）。%d 会把浮点按整数解释，输出垃圾值。",
+      "type": "mcq"
+    },
+    {
+      "id": "q004",
+      "topic": "输入",
+      "q": "scanf(\"%d\", a) 里 a 是 int 变量，这行代码的问题是？",
+      "options": [
+        "格式符写错了",
+        "缺少取地址符 &",
+        "scanf 不能读 int",
+        "没问题"
+      ],
+      "answer": 1,
+      "explain": "scanf 需要变量的地址，应写 &a。少了 & 会把 a 的值当地址用，运行时崩溃。",
+      "type": "mcq"
+    },
+    {
+      "id": "q005",
+      "topic": "数组",
+      "q": "int a[5]; 中合法的下标范围是？",
+      "options": [
+        "1 到 5",
+        "0 到 5",
+        "0 到 4",
+        "1 到 4"
+      ],
+      "answer": 2,
+      "explain": "C 的数组下标从 0 开始，5 个元素是 a[0] 到 a[4]。写 a[5] 就是越界。",
+      "type": "mcq"
+    },
+    {
+      "id": "q006",
+      "topic": "数组",
+      "q": "int a[5] 里 a[5] = 1; 会怎样？",
+      "options": [
+        "正常赋值",
+        "编译报错",
+        "越界写内存，行为不可预测",
+        "自动扩容"
+      ],
+      "answer": 2,
+      "explain": "编译器通常不报错，但这是越界写，可能踩坏别的变量甚至导致崩溃。",
+      "type": "mcq"
+    },
+    {
+      "id": "q007",
+      "topic": "循环",
+      "q": "for (i = 0; i < 10; i++) 循环体执行多少次？",
+      "options": [
+        "9",
+        "10",
+        "11",
+        "无限次"
+      ],
+      "answer": 1,
+      "explain": "i 取值 0..9，共 10 次。",
+      "type": "mcq"
+    },
+    {
+      "id": "q008",
+      "topic": "循环",
+      "q": "while 循环最容易被忽略、导致死循环的是？",
+      "options": [
+        "忘记写循环体",
+        "循环变量没有更新",
+        "循环体太长",
+        "用了 break"
+      ],
+      "answer": 1,
+      "explain": "循环条件里的变量如果不在体内改变，条件永远成立，就成了死循环。",
+      "type": "mcq"
+    },
+    {
+      "id": "q009",
+      "topic": "指针",
+      "q": "int *p; 之后立刻 *p = 1; 有什么风险？",
+      "options": [
+        "没有风险",
+        "p 是野指针，写入未知地址",
+        "会编译失败",
+        "会自动分配内存"
+      ],
+      "answer": 1,
+      "explain": "p 没有初始化，指向随机地址。必须让它指向有效内存（如 &a 或 malloc）才能解引用。",
+      "type": "mcq"
+    },
+    {
+      "id": "q010",
+      "topic": "指针",
+      "q": "& 和 * 的关系是？",
+      "options": [
+        "都是取地址",
+        "& 取地址，* 解引用",
+        "& 取内容，* 取地址",
+        "完全无关"
+      ],
+      "answer": 1,
+      "explain": "&a 得到 a 的地址；*p 取出 p 指向的那块内存里的值。两者互为逆运算。",
+      "type": "mcq"
+    },
+    {
+      "id": "q011",
+      "topic": "字符串",
+      "q": "char s[] = \"abc\"; 这个数组占几个字节？",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "不确定"
+      ],
+      "answer": 1,
+      "explain": "3 个字符 + 1 个字符串结束符 '\\0'，共 4 字节。",
+      "type": "mcq"
+    },
+    {
+      "id": "q012",
+      "topic": "字符串",
+      "q": "比较两个字符串是否相同，应该用？",
+      "options": [
+        "s1 == s2",
+        "strcmp(s1, s2) == 0",
+        "s1 = s2",
+        "sizeof(s1) == sizeof(s2)"
+      ],
+      "answer": 1,
+      "explain": "== 比较的是地址不是内容。比较内容要用 strcmp，返回 0 表示相同。",
+      "type": "mcq"
+    },
+    {
+      "id": "q013",
+      "topic": "函数",
+      "q": "函数返回类型是 int，但某条路径没有 return，会发生什么？",
+      "options": [
+        "编译一定失败",
+        "返回随机值，行为不可预测",
+        "自动返回 0",
+        "程序不会结束"
+      ],
+      "answer": 1,
+      "explain": "C 不强制检查所有路径，实际返回的是寄存器里的残留值，可能随机。",
+      "type": "mcq"
+    },
+    {
+      "id": "q014",
+      "topic": "类型",
+      "q": "3 / 2 * 2 的结果是？",
+      "options": [
+        "3",
+        "2",
+        "3.0",
+        "2.0"
+      ],
+      "answer": 1,
+      "explain": "3/2 先算，两个 int 得 1，再乘 2 得 2。想要 3 得写 3.0/2*2。",
+      "type": "mcq"
+    },
+    {
+      "id": "q015",
+      "topic": "变量",
+      "q": "局部变量 int sum; 没有赋初值就 sum += i; 会怎样？",
+      "options": [
+        "从 0 开始累加",
+        "编译错误",
+        "从随机值开始累加",
+        "自动清零"
+      ],
+      "answer": 2,
+      "explain": "局部变量不初始化就是内存里的残留值，累加结果不可预测。应写 int sum = 0;",
+      "type": "mcq"
+    },
+    {
+      "id": "c001",
+      "type": "code",
+      "topic": "循环",
+      "title": "求平均成绩",
+      "statement": "从键盘输入一个整数 n，再输入 n 个成绩（整数），计算并输出平均分，保留两位小数。",
+      "io": "输入：3 / 80 90 70    输出：80.00",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int n, i, score, sum = 0;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &score);\n        sum += score;\n    }\n    printf(\"%.2f\\n\", (double)sum / n);\n    return 0;\n}",
+      "explain": "关键在 (double)sum / n：sum 和 n 都是 int，不转换会做整数除法，小数部分被截断。",
+      "tests": [
+        {
+          "input": "3\n80 90 70\n",
+          "expect": "80.00"
+        }
+      ]
+    },
+    {
+      "id": "c002",
+      "type": "code",
+      "topic": "循环",
+      "title": "斐波那契数列",
+      "statement": "输出斐波那契数列的前 n 项（n 由键盘输入），每项之间一个空格。数列定义：F1=1，F2=1，之后每项等于前两项之和。",
+      "io": "输入：8    输出：1 1 2 3 5 8 13 21",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int n, i;\n    long a = 1, b = 1, t;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        printf(\"%ld \", a);\n        t = a + b;\n        a = b;\n        b = t;\n    }\n    printf(\"\\n\");\n    return 0;\n}",
+      "explain": "用两个变量滚动推进（a=b; b=t）比存整个数组省空间。项数大时记得用 long。",
+      "tests": [
+        {
+          "input": "8\n",
+          "expect": "1 1 2 3 5 8 13 21"
+        },
+        {
+          "input": "1\n",
+          "expect": "1"
+        }
+      ]
+    },
+    {
+      "id": "g001",
+      "type": "mcq",
+      "topic": "程序结构",
+      "q": "C 程序的执行总是从哪个函数开始？",
+      "options": [
+        "第一个定义的函数",
+        "main 函数",
+        "最后定义的函数",
+        "#include 里的函数"
+      ],
+      "answer": 1,
+      "explain": "不管 main 写在文件哪个位置，程序都从 main 开始执行，所以一个完整的可执行程序必须且只能有一个 main。"
+    },
+    {
+      "id": "g002",
+      "type": "mcq",
+      "topic": "程序结构",
+      "q": "int main(void) 里的 return 0; 表示什么？",
+      "options": [
+        "程序出错",
+        "程序正常结束",
+        "返回给 main 的参数",
+        "必须写，没有含义"
+      ],
+      "answer": 1,
+      "explain": "main 的返回值交给操作系统，0 表示正常结束，非 0 通常表示异常。操作系统和一些判题系统会检查这个值。"
+    },
+    {
+      "id": "g003",
+      "type": "mcq",
+      "topic": "预处理",
+      "q": "#include <stdio.h> 是在什么阶段起作用的？",
+      "options": [
+        "编译时，由编译器解析",
+        "编译之前，由预处理器把文件内容插入进来",
+        "运行时，由程序自己读取",
+        "链接时，由链接器查找"
+      ],
+      "answer": 1,
+      "explain": "#include 是预处理指令，在真正编译之前，预处理器会把 stdio.h 的内容原样插入到这个位置。所以它本质上只是文本替换。"
+    },
+    {
+      "id": "g004",
+      "type": "mcq",
+      "topic": "注释",
+      "q": "关于 C 的注释，下列说法正确的是？",
+      "options": [
+        "/* */ 可以嵌套使用",
+        "// 注释只能写在行首",
+        "/* */ 不能嵌套",
+        "注释会参与编译，影响程序运行速度"
+      ],
+      "answer": 2,
+      "explain": "/* */ 不能嵌套：/* a /* b */ c */ 里第一个 */ 就结束了注释，后面的 c */ 会变成代码导致报错。// 可以写在行尾。注释在预处理阶段就被删掉，不影响运行。"
+    },
+    {
+      "id": "g005",
+      "type": "mcq",
+      "topic": "数据类型",
+      "q": "int a = 3.9; 执行后 a 的值是？",
+      "options": [
+        "4",
+        "3.9",
+        "3",
+        "编译错误"
+      ],
+      "answer": 2,
+      "explain": "把浮点赋给 int 会直接截断小数部分（不是四舍五入），所以是 3。想要四舍五入得写 (int)(3.9 + 0.5)。"
+    },
+    {
+      "id": "g006",
+      "type": "mcq",
+      "topic": "运算符",
+      "q": "表达式 1 / 2 * 2 的值是？",
+      "options": [
+        "1",
+        "0",
+        "0.5",
+        "2"
+      ],
+      "answer": 1,
+      "explain": "1/2 两个操作数都是 int，先算得 0（整数除法截断），再乘 2 得 0。想得到 1 要写 1.0/2*2。"
+    },
+    {
+      "id": "g007",
+      "type": "mcq",
+      "topic": "运算符",
+      "q": "表达式 -7 % 3 的值是？",
+      "options": [
+        "-1",
+        "1",
+        "2",
+        "-2"
+      ],
+      "answer": 0,
+      "explain": "C99 规定取余结果的符号与被除数相同。-7/3 的商是 -2（向零取整），-7 - (-2)*3 = -1。"
+    },
+    {
+      "id": "g008",
+      "type": "mcq",
+      "topic": "格式化输出",
+      "q": "char c = 'A'; printf(\"%d\", c); 输出什么？",
+      "options": [
+        "A",
+        "65",
+        "97",
+        "编译错误"
+      ],
+      "answer": 1,
+      "explain": "char 在算术和 %d 输出时按整数处理，'A' 的 ASCII 码是 65。%c 才会输出字符 A。"
+    },
+    {
+      "id": "g009",
+      "type": "mcq",
+      "topic": "输入",
+      "q": "用 scanf 读一个 double 变量 d，正确的写法是？",
+      "options": [
+        "scanf(\"%f\", &d)",
+        "scanf(\"%lf\", &d)",
+        "scanf(\"%d\", &d)",
+        "scanf(\"%f\", d)"
+      ],
+      "answer": 1,
+      "explain": "scanf 读 double 必须用 %lf（printf 输出时 %f 就够了）。用 %f 读 double 会把 8 字节按 4 字节写入，破坏内存。"
+    },
+    {
+      "id": "g010",
+      "type": "mcq",
+      "topic": "分支",
+      "q": "if (a = 0) { ... } 这段代码的问题是什么？",
+      "options": [
+        "语法错误，编译不过",
+        "把比较写成了赋值，条件恒为假",
+        "会死循环",
+        "没有问题"
+      ],
+      "answer": 1,
+      "explain": "= 是赋值，a 被赋为 0，表达式值为 0（假），分支永远不执行。应该是 if (a == 0)。这类 bug 编译器通常只给警告。"
+    },
+    {
+      "id": "g011",
+      "type": "mcq",
+      "topic": "分支",
+      "q": "在 C 中，if 后面括号里的值满足什么条件算\"真\"？",
+      "options": [
+        "只能是 1",
+        "任何非零值",
+        "任何大于 0 的值",
+        "只能是 true"
+      ],
+      "answer": 1,
+      "explain": "C 没有真正的布尔类型（C99 之前），0 为假，任何非零值（包括负数）都为真。所以 if (-1) 也会执行。"
+    },
+    {
+      "id": "g012",
+      "type": "mcq",
+      "topic": "分支",
+      "q": "switch 语句中，case 末尾忘记写 break 会发生什么？",
+      "options": [
+        "编译报错",
+        "只执行当前 case",
+        "继续执行后面所有 case 的语句（穿透）",
+        "跳出整个 switch 但不报错"
+      ],
+      "answer": 2,
+      "explain": "这叫作 fall-through（穿透）：没有 break 就一直往下执行。有时会故意利用它，但多数情况是 bug。"
+    },
+    {
+      "id": "g013",
+      "type": "mcq",
+      "topic": "运算符",
+      "q": "表达式 if (p != NULL && *p > 0) 中，&& 的短路特性保证了什么？",
+      "options": [
+        "p 为空时不会执行 *p，不会崩溃",
+        "两个条件都会被求值",
+        "p 为空时会直接报错",
+        "&& 会强制转换 p 的类型"
+      ],
+      "answer": 0,
+      "explain": "&& 从左往右算，左边为假就不算右边。所以 p 为 NULL 时 *p 不会被求值，避免了空指针崩溃。这正是这种写法的意义。"
+    },
+    {
+      "id": "g014",
+      "type": "mcq",
+      "topic": "循环",
+      "q": "for (i = 1; i <= 10; i++) 循环体一共执行多少次？",
+      "options": [
+        "9 次",
+        "10 次",
+        "11 次",
+        "无限次"
+      ],
+      "answer": 1,
+      "explain": "i 依次取 1,2,...,10，共 10 次。循环次数 = 终值 - 初值 + 1（当步长为 1 时）。"
+    },
+    {
+      "id": "g015",
+      "type": "mcq",
+      "topic": "循环",
+      "q": "while 与 do-while 最关键的区别是？",
+      "options": [
+        "do-while 至少执行一次循环体",
+        "while 不能写条件",
+        "do-while 更快",
+        "没有区别"
+      ],
+      "answer": 0,
+      "explain": "while 先判断后执行，条件一开始就不成立时一次都不执行；do-while 先执行一次再判断，所以循环体至少执行一次。"
+    },
+    {
+      "id": "g016",
+      "type": "mcq",
+      "topic": "循环",
+      "q": "循环里 break 和 continue 的区别是？",
+      "options": [
+        "都能结束循环",
+        "break 结束整个循环，continue 只结束本次迭代",
+        "continue 结束整个循环，break 只跳过本次",
+        "没有区别"
+      ],
+      "answer": 1,
+      "explain": "break 直接跳出循环；continue 跳过本次剩下的语句，进入下一次迭代（for 会先执行 i++）。"
+    },
+    {
+      "id": "g017",
+      "type": "code",
+      "topic": "分支",
+      "title": "判断闰年",
+      "statement": "从键盘输入一个年份（整数），判断它是不是闰年。是则输出 yes，否则输出 no。",
+      "io": "输入：2024    输出：yes        输入：1900    输出：no",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int y;\n    scanf(\"%d\", &y);\n    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0)\n        printf(\"yes\\n\");\n    else\n        printf(\"no\\n\");\n    return 0;\n}",
+      "explain": "闰年规则：能被 4 整除且不能被 100 整除，或者能被 400 整除。1900 不是闰年（能被 100 整除但不能被 400），2000 是闰年。注意括号不能省，|| 和 && 优先级不同。",
+      "tests": [
+        {
+          "input": "2024\n",
+          "expect": "yes"
+        },
+        {
+          "input": "1900\n",
+          "expect": "no"
+        },
+        {
+          "input": "2000\n",
+          "expect": "yes"
+        }
+      ]
+    },
+    {
+      "id": "g018",
+      "type": "code",
+      "topic": "循环",
+      "title": "1 到 100 的偶数和",
+      "statement": "用循环计算 1 到 100 之间所有偶数的和，输出结果。",
+      "io": "输出：2550",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int i, sum = 0;\n    for (i = 1; i <= 100; i++) {\n        if (i % 2 == 0)\n            sum += i;\n    }\n    printf(\"%d\\n\", sum);\n    return 0;\n}",
+      "explain": "2+4+...+100 = 2*(1+2+...+50) = 2*1275 = 2550。也可以写 for (i = 2; i <= 100; i += 2)，少一层判断。关键是 sum 必须初始化为 0。",
+      "tests": [
+        {
+          "input": "",
+          "expect": "2550"
+        }
+      ]
+    },
+    {
+      "id": "g019",
+      "type": "code",
+      "topic": "循环",
+      "title": "求最大公约数",
+      "statement": "输入两个正整数，用辗转相除法求它们的最大公约数并输出。",
+      "io": "输入：12 18    输出：6",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int a, b, t;\n    scanf(\"%d %d\", &a, &b);\n    while (b != 0) {\n        t = a % b;\n        a = b;\n        b = t;\n    }\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+      "explain": "辗转相除：反复用 a % b 替换，直到 b 为 0，此时 a 就是最大公约数。循环结束时答案在 a 里，不是 b。",
+      "tests": [
+        {
+          "input": "12 18\n",
+          "expect": "6"
+        },
+        {
+          "input": "100 75\n",
+          "expect": "25"
+        },
+        {
+          "input": "7 13\n",
+          "expect": "1"
+        }
+      ]
+    },
+    {
+      "id": "g020",
+      "type": "code",
+      "topic": "循环",
+      "title": "判断素数",
+      "statement": "输入一个大于 1 的整数 n，判断它是不是素数。是输出 yes，否则输出 no。",
+      "io": "输入：17    输出：yes        输入：21    输出：no",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int n, i, is_prime = 1;\n    scanf(\"%d\", &n);\n    for (i = 2; i * i <= n; i++) {\n        if (n % i == 0) {\n            is_prime = 0;\n            break;\n        }\n    }\n    printf(is_prime ? \"yes\\n\" : \"no\\n\");\n    return 0;\n}",
+      "explain": "只需试除到 sqrt(n)：如果 n 有大于 sqrt(n) 的因子，必有小于 sqrt(n) 的对应因子。用 i*i <= n 避免引入 math.h。21 = 3*7，试到 3 就发现能整除。",
+      "tests": [
+        {
+          "input": "17\n",
+          "expect": "yes"
+        },
+        {
+          "input": "21\n",
+          "expect": "no"
+        },
+        {
+          "input": "2\n",
+          "expect": "yes"
+        },
+        {
+          "input": "9\n",
+          "expect": "no"
+        }
+      ]
+    },
+    {
+      "id": "g021",
+      "type": "mcq",
+      "topic": "函数",
+      "q": "函数定义 void show(int x) 中的 void 表示什么？",
+      "options": [
+        "参数是空的",
+        "函数没有返回值",
+        "函数不能被调用",
+        "函数没有参数"
+      ],
+      "answer": 1,
+      "explain": "void 放在函数名前面表示返回类型为空，函数不返回任何值，调用处也不能写 x = show(1)。至于参数，要看括号里写的是什么：show(int x) 有一个参数，show(void) 才是没有参数。"
+    },
+    {
+      "id": "g022",
+      "type": "mcq",
+      "topic": "函数",
+      "q": "函数声明（原型）int max(int a, int b); 的作用是？",
+      "options": [
+        "定义函数体",
+        "告诉编译器这个函数的参数和返回类型，让调用能通过检查",
+        "分配内存",
+        "把函数导出到其他文件"
+      ],
+      "answer": 1,
+      "explain": "声明只描述形状（返回类型 + 参数类型），不提供实现。有了它，编译器才能在调用处检查实参类型和个数是否匹配。定义才写函数体。"
+    },
+    {
+      "id": "g023",
+      "type": "mcq",
+      "topic": "函数",
+      "q": "C 语言中，函数参数的传递方式是？",
+      "options": [
+        "引用传递",
+        "值传递（形参是实参的副本）",
+        "地址传递",
+        "由调用者决定"
+      ],
+      "answer": 1,
+      "explain": "C 只有值传递：调用时把实参的值复制给形参。所以在函数里改形参，不会影响外面的实参。想让函数改到外面的变量，只能传地址（指针）。"
+    },
+    {
+      "id": "g024",
+      "type": "mcq",
+      "topic": "函数",
+      "q": "void add(int x) { x = x + 1; } 调用 add(a); 之后 a 的值会变吗？",
+      "options": [
+        "会加 1",
+        "不会变",
+        "取决于 a 的类型",
+        "编译报错"
+      ],
+      "answer": 1,
+      "explain": "形参 x 拿到的是 a 的副本，函数里改的是副本，函数结束后副本销毁，a 原封不动。要改 a 得写 void add(int *x) { (*x)++; } 并调用 add(&a)。"
+    },
+    {
+      "id": "g025",
+      "type": "mcq",
+      "topic": "函数",
+      "q": "一个声明返回 int 的函数，如果执行到末尾都没有 return，会发生什么？",
+      "options": [
+        "编译一定失败",
+        "自动返回 0",
+        "返回一个不确定的值",
+        "程序立即终止"
+      ],
+      "answer": 2,
+      "explain": "C 不强制检查所有执行路径，实际返回的是寄存器里残留的值，可能每次都不一样。这类 bug 极难排查，所以开 -Wall 会警告 control reaches end of non-void function。"
+    },
+    {
+      "id": "g026",
+      "type": "mcq",
+      "topic": "数组",
+      "q": "int a[10]; 中合法下标的取值范围是？",
+      "options": [
+        "0 到 10",
+        "1 到 10",
+        "0 到 9",
+        "1 到 9"
+      ],
+      "answer": 2,
+      "explain": "C 数组下标从 0 开始，10 个元素是 a[0] 到 a[9]。a[10] 已经越界，但编译器通常不报错，会悄悄写到数组后面的内存里。"
+    },
+    {
+      "id": "g027",
+      "type": "mcq",
+      "topic": "数组",
+      "q": "int a[5] = {1, 2}; 之后 a[3] 的值是？",
+      "options": [
+        "随机值",
+        "0",
+        "1",
+        "未定义，编译失败"
+      ],
+      "answer": 1,
+      "explain": "初始化时没写到的元素会被自动置为 0。所以 a 是 {1,2,0,0,0}。注意：这只对初始化成立，int a[5]; 之后没赋值才是随机值。"
+    },
+    {
+      "id": "g028",
+      "type": "mcq",
+      "topic": "数组",
+      "q": "int a[] = {3, 1, 4, 1, 5}; 则 sizeof(a) / sizeof(a[0]) 的值是？",
+      "options": [
+        "4",
+        "5",
+        "20",
+        "不确定"
+      ],
+      "answer": 1,
+      "explain": "sizeof(a) 是整个数组的字节数（5*4=20），sizeof(a[0]) 是单个元素的字节数（4），相除得到元素个数 5。这是求数组长度的常用写法，但只在同一作用域内有效（数组作参数传到函数后会退化成指针）。"
+    },
+    {
+      "id": "g029",
+      "type": "mcq",
+      "topic": "数组",
+      "q": "int a[3][4]; 这个数组一共有多少个元素？",
+      "options": [
+        "7",
+        "12",
+        "34",
+        "3"
+      ],
+      "answer": 1,
+      "explain": "二维数组是 3 行 4 列，元素总数 3*4=12。可以理解为\"3 个元素，每个元素是一个 int[4]\"。"
+    },
+    {
+      "id": "g030",
+      "type": "mcq",
+      "topic": "数组",
+      "q": "把数组名 a 作为实参传给函数时，实际传过去的是什么？",
+      "options": [
+        "整个数组的副本",
+        "数组第一个元素的地址",
+        "数组的长度",
+        "数组元素的和"
+      ],
+      "answer": 1,
+      "explain": "数组名在表达式中会退化成指向首元素的指针，所以函数收到的是地址。因此函数里改 a[i] 会改到原数组，而且函数内部无法用 sizeof 求出数组长度。"
+    },
+    {
+      "id": "g031",
+      "type": "mcq",
+      "topic": "数组",
+      "q": "以下哪个声明会正确地把数组清零？",
+      "options": [
+        "int a[10];",
+        "int a[10] = {0};",
+        "int a[10] = 0;",
+        "int a[10] = {1};"
+      ],
+      "answer": 1,
+      "explain": "{0} 表示第一个元素给 0，其余元素按规则自动补 0，所以整体全 0。直接写 = 0 是语法错误（数组不能用标量初始化）；{1} 则是 a[0]=1 其余为 0。"
+    },
+    {
+      "id": "g032",
+      "type": "mcq",
+      "topic": "指针",
+      "q": "若有 int a = 5; int *p = &a; 则 *p 表示什么？",
+      "options": [
+        "a 的地址",
+        "p 的地址",
+        "a 的值（也就是 5）",
+        "p 的值"
+      ],
+      "answer": 2,
+      "explain": "& 取地址，* 解引用。p 里存的是 a 的地址，*p 就是顺着地址取出的内容，即 a 的值 5。改 *p = 8 等价于 a = 8。"
+    },
+    {
+      "id": "g033",
+      "type": "mcq",
+      "topic": "指针",
+      "q": "对于 int 类型的指针 p，执行 p + 1 后地址会向前移动多少字节？",
+      "options": [
+        "1 个字节",
+        "4 个字节（取决于 sizeof(int)）",
+        "8 个字节",
+        "不确定，取决于系统"
+      ],
+      "answer": 1,
+      "explain": "指针算术是按\"元素\"为单位而不是字节：p+1 指向下一个 int，实际地址增加 sizeof(int)。在常见的 32/64 位 MinGW 上 int 是 4 字节。若是 char* 则加 1 字节。"
+    },
+    {
+      "id": "g034",
+      "type": "mcq",
+      "topic": "指针",
+      "q": "int a[5] = {10, 20, 30, 40, 50}; int *p = a; 那么 *(p + 2) 的值是？",
+      "options": [
+        "10",
+        "20",
+        "30",
+        "40"
+      ],
+      "answer": 2,
+      "explain": "p 指向 a[0]，p+2 指向 a[2]，解引用得到 30。这也说明 a[i] 与 *(a+i) 完全等价——数组下标本质上就是指针运算的语法糖。"
+    },
+    {
+      "id": "g035",
+      "type": "mcq",
+      "topic": "指针",
+      "q": "只写 int *p; 然后立刻 *p = 10; 会发生什么？",
+      "options": [
+        "正常赋值",
+        "编译报错",
+        "向未知地址写入，可能崩溃",
+        "自动分配内存"
+      ],
+      "answer": 2,
+      "explain": "p 是未初始化的野指针，里面是随机地址。向它写入属于未定义行为，常见结果是段错误 0xC0000005。正确做法是先让它指向有效内存：int a; int *p = &a; 或 malloc。"
+    },
+    {
+      "id": "g036",
+      "type": "mcq",
+      "topic": "指针",
+      "q": "char *s = \"hello\"; 与 char s[] = \"hello\"; 的关键区别是？",
+      "options": [
+        "没有区别",
+        "前者指向只读常量区，不能改字符；后者是数组，可以改",
+        "前者更省内存，可以改",
+        "后者不能用于 printf"
+      ],
+      "answer": 1,
+      "explain": "字符串字面量 \"hello\" 存在只读段，通过指针改它会崩溃；数组版本是把内容复制到自己的内存里，可读可写。所以 s[0]='H' 在指针版是错误，在数组版没问题。"
+    },
+    {
+      "id": "g037",
+      "type": "mcq",
+      "topic": "指针",
+      "q": "想写一个能真正交换两个 int 变量的函数，参数应该怎么声明？",
+      "options": [
+        "void swap(int a, int b)",
+        "void swap(int *a, int *b) 并调用 swap(&x, &y)",
+        "void swap(int a, int *b)",
+        "int swap(int a, int b)"
+      ],
+      "answer": 1,
+      "explain": "值传递传的是副本，改不动外面的变量。必须传地址进去，函数里用 *a 和 *b 操作原来的变量。调用时要写 swap(&x, &y)，少写 & 是最常见的错误。"
+    },
+    {
+      "id": "g038",
+      "type": "mcq",
+      "topic": "结构体",
+      "q": "已定义 struct point { int x; int y; }; 并声明 struct point p; 访问 x 成员的正确写法是？",
+      "options": [
+        "p->x",
+        "p.x",
+        "p[x]",
+        "*p.x"
+      ],
+      "answer": 1,
+      "explain": "普通结构体变量用点号 p.x。-> 是给结构体指针用的：struct point *q = &p; 时写 q->x。"
+    },
+    {
+      "id": "g039",
+      "type": "mcq",
+      "topic": "结构体",
+      "q": "若有 struct point *q = &p; 访问 p 的 x 成员，以下写法正确的是？",
+      "options": [
+        "q.x",
+        "q->x",
+        "q[x]",
+        "q::x"
+      ],
+      "answer": 1,
+      "explain": "结构体指针用 -> 访问成员，等价于 (*q).x。注意括号不能省：*q.x 会被理解成 *(q.x)，因为 . 的优先级高于 *。"
+    },
+    {
+      "id": "g040",
+      "type": "mcq",
+      "topic": "结构体",
+      "q": "把结构体变量作为函数参数传递时，实际传的是什么？",
+      "options": [
+        "整个结构体的副本",
+        "结构体的地址",
+        "第一个成员的地址",
+        "不能传结构体"
+      ],
+      "answer": 0,
+      "explain": "和普通变量一样是值传递，会复制整个结构体。结构体很大时这个复制开销明显，所以常改成传指针 const struct point *p，只传地址。"
+    },
+    {
+      "id": "g041",
+      "type": "mcq",
+      "topic": "作用域",
+      "q": "在函数内部定义的局部变量，如果没有初始化，它的初始值是？",
+      "options": [
+        "一定是 0",
+        "不确定的随机值",
+        "一定是 1",
+        "编译时会报错"
+      ],
+      "answer": 1,
+      "explain": "局部变量分配在栈上，不会自动清零，里面是上次残留的内容。所以在使用前必须显式赋值，尤其是做累加时 sum 要写成 int sum = 0;。"
+    },
+    {
+      "id": "g042",
+      "type": "mcq",
+      "topic": "作用域",
+      "q": "在所有函数外面定义的全局变量，如果没有显式初始化，它的初始值是？",
+      "options": [
+        "不确定的随机值",
+        "0",
+        "取决于编译器",
+        "编译报错"
+      ],
+      "answer": 1,
+      "explain": "全局变量和静态变量存储在静态区，程序启动前由系统清零，所以默认值是 0。这一点和局部变量完全相反，是常考的对比点。"
+    },
+    {
+      "id": "g043",
+      "type": "mcq",
+      "topic": "作用域",
+      "q": "一个函数只能通过 return 返回几个值？",
+      "options": [
+        "0 个或 1 个",
+        "最多 2 个",
+        "任意个",
+        "取决于参数个数"
+      ],
+      "answer": 0,
+      "explain": "return 只能带回一个值（void 函数则不带）。想一次得到多个结果，要么用指针参数把结果写回去，要么返回结构体。这是把\"求最大最小值\"写成函数时要用指针参数的原因。"
+    },
+    {
+      "id": "g044",
+      "type": "mcq",
+      "topic": "数组",
+      "q": "typedef int Score; 之后 Score s[5]; 表示什么？",
+      "options": [
+        "定义一个函数",
+        "定义一个长度为 5 的 int 数组 s",
+        "把 Score 转成 int",
+        "语法错误"
+      ],
+      "answer": 1,
+      "explain": "typedef 是给已有类型起别名，Score 就是 int 的另一个名字，所以 Score s[5] 等价于 int s[5]。它不创建新类型，只是让代码更易读。"
+    },
+    {
+      "id": "g045",
+      "type": "code",
+      "topic": "数组",
+      "title": "求数组最大值和最小值",
+      "statement": "先输入整数 n（不超过 100），再输入 n 个整数。输出其中的最大值和最小值，中间一个空格。",
+      "io": "输入：5 / 3 7 1 9 4    输出：9 1",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int n, i, x, max, min;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        if (i == 0) {\n            max = x;\n            min = x;\n        } else {\n            if (x > max) max = x;\n            if (x < min) min = x;\n        }\n    }\n    printf(\"%d %d\\n\", max, min);\n    return 0;\n}",
+      "explain": "关键是初值：如果写成 max = 0，遇到全是负数时结果就错了，所以用第一个读入的数当初始最大值和最小值最稳妥。",
+      "tests": [
+        {
+          "input": "5\n3 7 1 9 4\n",
+          "expect": "9 1"
+        },
+        {
+          "input": "3\n-5 -2 -9\n",
+          "expect": "-2 -9"
+        },
+        {
+          "input": "1\n42\n",
+          "expect": "42 42"
+        }
+      ]
+    },
+    {
+      "id": "g046",
+      "type": "code",
+      "topic": "数组",
+      "title": "冒泡排序（升序）",
+      "statement": "输入 n 个整数，用冒泡排序把它们从小到大排好并依次输出，每个数后面跟一个空格。",
+      "io": "输入：5 / 5 3 8 1 2    输出：1 2 3 5 8",
+      "solution": "#include <stdio.h>\nint main(void)\n{\n    int n, i, j, t, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    for (i = 0; i < n - 1; i++)\n        for (j = 0; j < n - 1 - i; j++)\n            if (a[j] > a[j + 1]) {\n                t = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = t;\n            }\n    for (i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}",
+      "explain": "内层循环每跑完一轮，最大的数就\"冒\"到末尾，所以下一轮可以少比一个（n-1-i）。交换三个赋值不能写反，也不需要额外数组。",
+      "tests": [
+        {
+          "input": "5\n5 3 8 1 2\n",
+          "expect": "1 2 3 5 8"
+        },
+        {
+          "input": "4\n1 2 3 4\n",
+          "expect": "1 2 3 4"
+        },
+        {
+          "input": "2\n9 3\n",
+          "expect": "3 9"
+        }
+      ]
+    },
+    {
+      "id": "g047",
+      "type": "code",
+      "topic": "指针",
+      "title": "自己实现求字符串长度",
+      "statement": "不用 strlen，自己写一个函数 int str_len(const char *s) 求字符串长度，在主函数里读入一个不含空格的字符串并输出它的长度。",
+      "io": "输入：hello    输出：5",
+      "solution": "#include <stdio.h>\n\nint str_len(const char *s)\n{\n    int n = 0;\n    while (s[n] != '\\0')\n        n++;\n    return n;\n}\n\nint main(void)\n{\n    char s[100];\n    scanf(\"%s\", s);\n    printf(\"%d\\n\", str_len(s));\n    return 0;\n}",
+      "explain": "字符串以 '\\0' 结尾，所以从前往后数到 '\\0' 之前的字符个数就是长度。注意终止符本身不计数，也不在 strlen 的结果里。",
+      "tests": [
+        {
+          "input": "hello\n",
+          "expect": "5"
+        },
+        {
+          "input": "a\n",
+          "expect": "1"
+        },
+        {
+          "input": "Cprogramming\n",
+          "expect": "12"
+        }
+      ]
+    },
+    {
+      "id": "g048",
+      "type": "code",
+      "topic": "指针",
+      "title": "字符串反转",
+      "statement": "读入一个不含空格的字符串，把它就地反转后输出。",
+      "io": "输入：abcde    输出：edcba",
+      "solution": "#include <stdio.h>\n#include <string.h>\n\nint main(void)\n{\n    char s[100], t;\n    int i, n;\n    scanf(\"%s\", s);\n    n = strlen(s);\n    for (i = 0; i < n / 2; i++) {\n        t = s[i];\n        s[i] = s[n - 1 - i];\n        s[n - 1 - i] = t;\n    }\n    printf(\"%s\\n\", s);\n    return 0;\n}",
+      "explain": "只需遍历前一半，把 s[i] 和 s[n-1-i] 对调。如果循环写成 i < n 就会换两次，结果又变回原样。n/2 对奇偶长度都正确，中间那个字符不动。",
+      "tests": [
+        {
+          "input": "abcde\n",
+          "expect": "edcba"
+        },
+        {
+          "input": "ab\n",
+          "expect": "ba"
+        },
+        {
+          "input": "x\n",
+          "expect": "x"
+        }
+      ]
+    },
+    {
+      "id": "g049",
+      "type": "code",
+      "topic": "指针",
+      "title": "用指针交换两个数",
+      "statement": "读入两个整数，写一个函数 void swap(int *a, int *b) 交换它们的值，在主函数里输出交换后的结果。",
+      "io": "输入：3 8    输出：8 3",
+      "solution": "#include <stdio.h>\n\nvoid swap(int *a, int *b)\n{\n    int t = *a;\n    *a = *b;\n    *b = t;\n}\n\nint main(void)\n{\n    int x, y;\n    scanf(\"%d %d\", &x, &y);\n    swap(&x, &y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+      "explain": "函数里必须用 *a / *b 操作目标变量，写成 a = b 只是改指针本身。调用时要传地址 &x &y；如果写成 swap(x, y) 编译器会警告类型不匹配。",
+      "tests": [
+        {
+          "input": "3 8\n",
+          "expect": "8 3"
+        },
+        {
+          "input": "-1 5\n",
+          "expect": "5 -1"
+        },
+        {
+          "input": "7 7\n",
+          "expect": "7 7"
+        }
+      ]
+    },
+    {
+      "id": "g050",
+      "type": "mcq",
+      "topic": "递归",
+      "q": "写递归函数时，必须有的一样东西是什么？",
+      "options": [
+        "全局变量",
+        "终止条件（基线条件）",
+        "循环变量",
+        "数组"
+      ],
+      "answer": 1,
+      "explain": "没有终止条件的递归会一直往下调用，把栈耗尽，运行时报栈溢出（0xC00000FD）。所以每个递归函数都至少要有：终止条件 + 向终止条件靠近的递推。"
+    },
+    {
+      "id": "g051",
+      "type": "mcq",
+      "topic": "递归",
+      "q": "若阶乘写作 f(n) = n * f(n-1)，f(0) = 1，那么 f(4) 的值是？",
+      "options": [
+        "12",
+        "24",
+        "16",
+        "8"
+      ],
+      "answer": 1,
+      "explain": "f(4)=4*f(3)=4*3*f(2)=4*3*2*f(1)=4*3*2*1*f(0)=24。注意 f(0)=1 是终止条件，少了它就会无限递归。"
+    },
+    {
+      "id": "g052",
+      "type": "mcq",
+      "topic": "递归",
+      "q": "递归算法和循环（迭代）的关系是？",
+      "options": [
+        "递归效率一定更高",
+        "理论上任何递归都能改写成循环",
+        "循环不能替代递归",
+        "递归不能替代循环"
+      ],
+      "answer": 1,
+      "explain": "递归和迭代在计算能力上等价，可以互相改写。递归代码通常更简洁（适合树、链表、分治），但每次调用都要压栈，开销比循环大。"
+    },
+    {
+      "id": "g053",
+      "type": "mcq",
+      "topic": "递归",
+      "q": "递归层数太深时最可能发生什么？",
+      "options": [
+        "编译失败",
+        "栈溢出导致程序崩溃",
+        "自动转成循环",
+        "结果变成 0"
+      ],
+      "answer": 1,
+      "explain": "每次递归调用都会在栈上分配一个栈帧保存参数和返回地址。层数过多（或每层局部数组过大）会把栈耗尽，异常码 0xC00000FD。"
+    },
+    {
+      "id": "g054",
+      "type": "mcq",
+      "topic": "递归",
+      "q": "递归函数调用自身的那个阶段，通常称为？",
+      "options": [
+        "回归阶段",
+        "递推阶段",
+        "回溯阶段",
+        "终止阶段"
+      ],
+      "answer": 1,
+      "explain": "先不断向下调用叫递推；到达终止条件后一层层返回并计算结果的叫回归。两个阶段分开理解，才能看懂递归的执行过程。"
+    },
+    {
+      "id": "g055",
+      "type": "mcq",
+      "topic": "递归",
+      "q": "用递归求斐波那契数列 f(n)=f(n-1)+f(n-2) 时，n 稍大就很慢，主要原因是？",
+      "options": [
+        "递归本身不能计算",
+        "同一项被重复计算了指数级多次",
+        "整数溢出",
+        "栈不够"
+      ],
+      "answer": 1,
+      "explain": "f(5) 要算 f(4) 和 f(3)，f(4) 又要算 f(3) 和 f(2)——f(3) 被算了两次，越往下重复越多，复杂度接近 2^n。改进办法是循环递推或记忆化。"
+    },
+    {
+      "id": "g056",
+      "type": "mcq",
+      "topic": "文件",
+      "q": "用 fopen(\"data.txt\", \"r\") 打开一个不存在的文件，会怎样？",
+      "options": [
+        "自动创建空文件",
+        "返回 NULL",
+        "程序崩溃",
+        "返回空字符串"
+      ],
+      "answer": 1,
+      "explain": "\"r\" 是只读模式，只要求文件已存在，不会创建。文件不存在时 fopen 返回 NULL。所以打开后必须检查：if (fp == NULL) { ... }，否则后续读写会崩。"
+    },
+    {
+      "id": "g057",
+      "type": "mcq",
+      "topic": "文件",
+      "q": "用 \"w\" 模式打开一个已经有内容的文件，会发生什么？",
+      "options": [
+        "在末尾追加",
+        "原内容被清空，从文件头开始写",
+        "打开失败",
+        "只能读不能写"
+      ],
+      "answer": 1,
+      "explain": "\"w\" 是只写模式，打开时会先把文件截断为空。想保留原内容并在后面接着写，要用 \"a\"（追加）模式。"
+    },
+    {
+      "id": "g058",
+      "type": "mcq",
+      "topic": "文件",
+      "q": "文件用完后必须调用 fclose 的主要原因是？",
+      "options": [
+        "释放内存给其他程序",
+        "把缓冲区里还没写盘的数据真正写入文件并释放资源",
+        "关闭后才能再打开",
+        "不关闭会编译警告"
+      ],
+      "answer": 1,
+      "explain": "标准 I/O 带缓冲，fprintf/fputc 只是写进缓冲区，fclose 时才真正刷到磁盘。不关闭可能导致最后一部分数据丢失，同时也会耗尽文件句柄。"
+    },
+    {
+      "id": "g059",
+      "type": "mcq",
+      "topic": "文件",
+      "q": "用 fgetc 读文件时，怎么判断已经读到末尾？",
+      "options": [
+        "返回值等于 0",
+        "返回值等于 EOF",
+        "返回值等于 '\\n'",
+        "无法判断"
+      ],
+      "answer": 1,
+      "explain": "fgetc 读到文件末尾返回 EOF（通常是 -1，定义在 stdio.h）。注意它返回的是 int 而不是 char，所以变量要声明成 int，否则无法和 EOF 正确比较。"
+    },
+    {
+      "id": "g060",
+      "type": "mcq",
+      "topic": "文件",
+      "q": "程序写成 int main(int argc, char *argv[]) 时，argc 和 argv 分别表示？",
+      "options": [
+        "argc 是参数个数，argv 是参数字符串数组",
+        "argc 是字符串，argv 是数字",
+        "两者都是文件指针",
+        "argc 是返回值"
+      ],
+      "answer": 0,
+      "explain": "argc 是命令行参数的个数（包含程序名本身，所以至少为 1），argv 是这些参数的字符串数组，argv[0] 是程序名。这是给程序传文件名等参数的常用方式。"
+    },
+    {
+      "id": "g061",
+      "type": "mcq",
+      "topic": "文件",
+      "q": "把整数写入文本文件，最直接的标准函数是？",
+      "options": [
+        "fwrite 到文本模式",
+        "fprintf",
+        "fputc",
+        "printf"
+      ],
+      "answer": 1,
+      "explain": "fprintf(fp, \"%d\", n) 和 printf 用法一样，只是输出到文件。fputc 只能一次写一个字符；printf 是输出到屏幕。"
+    },
+    {
+      "id": "g062",
+      "type": "mcq",
+      "topic": "链表",
+      "q": "单链表结点的典型定义是？",
+      "options": [
+        "struct node { int v; };",
+        "struct node { int v; struct node *next; };",
+        "int node[100];",
+        "struct node { struct node next; };"
+      ],
+      "answer": 1,
+      "explain": "结点要有数据域和指针域，指针指向同类型的下一个结点。注意必须写 struct node *next 而不是 struct node next——后者会无限嵌套，无法确定大小。"
+    },
+    {
+      "id": "g063",
+      "type": "mcq",
+      "topic": "链表",
+      "q": "p = (struct node *)malloc(sizeof(struct node)); 之后最该做的事是？",
+      "options": [
+        "立即 free",
+        "检查 p 是否为 NULL",
+        "把 p 置空",
+        "不需要做什么"
+      ],
+      "answer": 1,
+      "explain": "内存不足时 malloc 返回 NULL，直接解引用 p->v 会段错误。规范写法是 if (p == NULL) { 处理错误 }。用完记得 free(p)，否则内存泄漏。"
+    },
+    {
+      "id": "g064",
+      "type": "mcq",
+      "topic": "链表",
+      "q": "已有 struct node *p; 要访问它指向结点的数据域 v，正确写法是？",
+      "options": [
+        "p.v",
+        "p->v",
+        "(*p.v)",
+        "&p.v"
+      ],
+      "answer": 1,
+      "explain": "指针用 -> 访问成员。p->v 等价于 (*p).v，但括号不能省：*p.v 会被解析成 *(p.v)，先取 v 再解引用，类型不对。"
+    },
+    {
+      "id": "g065",
+      "type": "mcq",
+      "topic": "链表",
+      "q": "遍历单链表直到结束，循环条件应该写成？",
+      "options": [
+        "p != NULL",
+        "p->next != NULL",
+        "p == NULL",
+        "p > 0"
+      ],
+      "answer": 0,
+      "explain": "最后一个结点的 next 是 NULL，所以用 p != NULL 作条件。如果写成 p->next != NULL，会在最后一个结点就停下，漏掉最后一个元素。"
+    },
+    {
+      "id": "g066",
+      "type": "mcq",
+      "topic": "链表",
+      "q": "释放整条链表时，正确做法是？",
+      "options": [
+        "只 free(head)",
+        "逐个结点 free，且先保存 next 再 free",
+        "free 数组名",
+        "不需要释放"
+      ],
+      "answer": 1,
+      "explain": "必须先保存 p->next 再 free(p)，否则释放后就再也找不到后面的结点了。只 free(head) 会把其余结点全部泄漏。"
+    },
+    {
+      "id": "g067",
+      "type": "mcq",
+      "topic": "预处理",
+      "q": "关于 #define 定义的宏，下列说法正确的是？",
+      "options": [
+        "宏有类型检查",
+        "宏只是编译前的文本替换，没有类型检查",
+        "宏是函数，有返回值",
+        "宏在运行时求值"
+      ],
+      "answer": 1,
+      "explain": "#define 是预处理指令，在编译前做纯文本替换，编译器根本看不到宏名。因此宏没有类型检查，也不会像函数那样求值一次，副作用（如 i++）可能被重复执行。"
+    },
+    {
+      "id": "g068",
+      "type": "mcq",
+      "topic": "预处理",
+      "q": "#define SQUARE(x) x*x 之后写 SQUARE(a+1)，展开结果是？",
+      "options": [
+        "(a+1)*(a+1)",
+        "a+1*a+1，即 2a+1",
+        "a*a+1",
+        "编译错误"
+      ],
+      "answer": 1,
+      "explain": "文本替换不做任何加括号处理：a+1*a+1，按优先级算成 a + (1*a) + 1 = 2a+1。正确写法是 #define SQUARE(x) ((x)*(x))，内外两层括号都不能省。"
+    },
+    {
+      "id": "g069",
+      "type": "mcq",
+      "topic": "预处理",
+      "q": "#include <stdio.h> 与 #include \"my.h\" 的主要区别是？",
+      "options": [
+        "没有区别",
+        "尖括号查系统目录，双引号先查当前目录",
+        "双引号只能用于 .c 文件",
+        "尖括号可以包含任意文件"
+      ],
+      "answer": 1,
+      "explain": "双引号形式会先在源文件所在目录找，找不到再去系统目录；尖括号直接在系统/编译器包含目录里找。所以自己写的头文件用双引号。"
+    },
+    {
+      "id": "g070",
+      "type": "mcq",
+      "topic": "存储类别",
+      "q": "函数内部写 static int count = 0; 这个变量的特点是？",
+      "options": [
+        "每次调用都重新初始化为 0",
+        "只初始化一次，函数返回后值仍然保留",
+        "变成了全局变量，其他函数能访问",
+        "和普通局部变量完全一样"
+      ],
+      "answer": 1,
+      "explain": "static 局部变量存在静态区，生命周期是整个程序，但作用域仍限于本函数。初始化只在第一次执行到时发生一次，后续调用沿用上次的值——常用来计数。"
+    },
+    {
+      "id": "g071",
+      "type": "mcq",
+      "topic": "存储类别",
+      "q": "在另一个 .c 文件里想使用本文件定义的全局变量，应该在声明前加什么？",
+      "options": [
+        "static",
+        "extern",
+        "const",
+        "register"
+      ],
+      "answer": 1,
+      "explain": "extern 表示\"这个变量在别的文件里定义\"，只做声明不分配空间。反过来，加 static 的全局变量只在本文件可见，其他文件用不了。"
+    },
+    {
+      "id": "g072",
+      "type": "mcq",
+      "topic": "随机数",
+      "q": "每次运行程序 rand() 都给出相同序列，应该怎么解决？",
+      "options": [
+        "多调用几次 rand()",
+        "调用 srand 设置不同的随机种子（如 srand(time(NULL))）",
+        "改用 random()",
+        "重启电脑"
+      ],
+      "answer": 1,
+      "explain": "rand() 是伪随机，默认种子固定，所以每次序列一样。srand 用时间做种子可以让每次运行不同。需要 #include <stdlib.h> 和 <time.h>。"
+    },
+    {
+      "id": "g073",
+      "type": "mcq",
+      "topic": "随机数",
+      "q": "要得到 1 到 100 之间的随机整数，正确写法是？",
+      "options": [
+        "rand() % 100",
+        "rand() % 100 + 1",
+        "rand() % 101",
+        "rand() / 100"
+      ],
+      "answer": 1,
+      "explain": "rand() % 100 得到 0..99，再加 1 就是 1..100。通用公式是 rand() % n + m 得到 m..m+n-1。直接 rand() % 101 会包含 0。"
+    },
+    {
+      "id": "g074",
+      "type": "code",
+      "topic": "递归",
+      "title": "递归求阶乘",
+      "statement": "读入一个非负整数 n（n ≤ 12），用递归函数求 n 的阶乘并输出。",
+      "io": "输入：5    输出：120",
+      "solution": "#include <stdio.h>\n\nlong fact(int n)\n{\n    if (n <= 1)\n        return 1;\n    return n * fact(n - 1);\n}\n\nint main(void)\n{\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%ld\\n\", fact(n));\n    return 0;\n}",
+      "explain": "终止条件是 n <= 1 时返回 1（0! 和 1! 都是 1）。返回值用 long 是因为 13! 已经超过 int 范围。注意别忘了 return，否则返回随机值。",
+      "tests": [
+        {
+          "input": "5\n",
+          "expect": "120"
+        },
+        {
+          "input": "0\n",
+          "expect": "1"
+        },
+        {
+          "input": "1\n",
+          "expect": "1"
+        }
+      ]
+    },
+    {
+      "id": "g075",
+      "type": "code",
+      "topic": "递归",
+      "title": "递归求斐波那契第 n 项",
+      "statement": "读入 n（1 ≤ n ≤ 20），用递归求斐波那契数列的第 n 项。定义：f(1)=1，f(2)=1，f(n)=f(n-1)+f(n-2)。",
+      "io": "输入：7    输出：13",
+      "solution": "#include <stdio.h>\n\nlong fib(int n)\n{\n    if (n == 1 || n == 2)\n        return 1;\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main(void)\n{\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%ld\\n\", fib(n));\n    return 0;\n}",
+      "explain": "两个终止条件 n==1 和 n==2 都要写，否则 n=1 时会继续调用 fib(0) 和 fib(-1) 导致无限递归。这个写法直观但重复计算多，n 大了会很慢。",
+      "tests": [
+        {
+          "input": "7\n",
+          "expect": "13"
+        },
+        {
+          "input": "1\n",
+          "expect": "1"
+        },
+        {
+          "input": "10\n",
+          "expect": "55"
+        }
+      ]
+    },
+    {
+      "id": "g076",
+      "type": "code",
+      "topic": "递归",
+      "title": "递归求数组元素之和",
+      "statement": "读入 n 和 n 个整数，用递归函数求它们的和并输出。递归函数原型为 int sum(int a[], int n)，表示求数组前 n 个元素的和。",
+      "io": "输入：5 / 1 2 3 4 5    输出：15",
+      "solution": "#include <stdio.h>\n\nint sum(int a[], int n)\n{\n    if (n <= 0)\n        return 0;\n    return a[n - 1] + sum(a, n - 1);\n}\n\nint main(void)\n{\n    int n, i, a[100];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n    printf(\"%d\\n\", sum(a, n));\n    return 0;\n}",
+      "explain": "递归思路：前 n 个元素的和 = 第 n 个元素 + 前 n-1 个元素的和，n 减到 0 时返回 0。数组作为参数传进去的是地址，不会复制整个数组。",
+      "tests": [
+        {
+          "input": "5\n1 2 3 4 5\n",
+          "expect": "15"
+        },
+        {
+          "input": "3\n-1 0 1\n",
+          "expect": "0"
+        },
+        {
+          "input": "1\n42\n",
+          "expect": "42"
+        }
+      ]
+    },
+    {
+      "id": "g077",
+      "type": "code",
+      "topic": "递归",
+      "title": "递归求最大公约数",
+      "statement": "读入两个正整数，用递归实现欧几里得算法求它们的最大公约数并输出。",
+      "io": "输入：12 18    输出：6",
+      "solution": "#include <stdio.h>\n\nint gcd(int a, int b)\n{\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", gcd(a, b));\n    return 0;\n}",
+      "explain": "欧几里得算法：gcd(a,b) = gcd(b, a%b)，直到 b 为 0，此时 a 就是答案。递归写法比循环更短，逻辑完全一致。",
+      "tests": [
+        {
+          "input": "12 18\n",
+          "expect": "6"
+        },
+        {
+          "input": "7 13\n",
+          "expect": "1"
+        },
+        {
+          "input": "100 75\n",
+          "expect": "25"
+        }
+      ]
+    },
+    {
+      "id": "g078",
+      "type": "code",
+      "topic": "链表",
+      "title": "头插法建链表并逆序输出",
+      "statement": "读入 n 个整数，用头插法建立单链表（即每次插在表头），然后从头到尾遍历输出。这样输出的顺序正好与输入相反。",
+      "io": "输入：3 / 1 2 3    输出：3 2 1",
+      "solution": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct node {\n    int v;\n    struct node *next;\n};\n\nint main(void)\n{\n    int n, i, x;\n    struct node *head = NULL, *p, *q;\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++) {\n        scanf(\"%d\", &x);\n        p = (struct node *)malloc(sizeof(struct node));\n        if (p == NULL)\n            return 1;\n        p->v = x;\n        p->next = head;\n        head = p;\n    }\n    for (q = head; q != NULL; q = q->next)\n        printf(\"%d \", q->v);\n    printf(\"\\n\");\n    while (head != NULL) {\n        p = head;\n        head = head->next;\n        free(p);\n    }\n    return 0;\n}",
+      "explain": "头插法的三步：新结点 next 指向当前表头、表头指向新结点、更新。所以最后插入的在最前面，输出自然逆序。释放时也必须先存 next 再 free。",
+      "tests": [
+        {
+          "input": "3\n1 2 3\n",
+          "expect": "3 2 1"
+        },
+        {
+          "input": "1\n9\n",
+          "expect": "9"
+        },
+        {
+          "input": "4\n5 6 7 8\n",
+          "expect": "8 7 6 5"
+        }
+      ]
+    },
+    {
+      "id": "g079",
+      "type": "code",
+      "topic": "预处理",
+      "title": "用宏求平方（注意括号）",
+      "statement": "用 #define 定义一个求平方的宏 SQUARE(x)，读入一个整数 a，输出 SQUARE(a+1) 的值。命题意图：检验你知不知道宏展开时括号的作用。",
+      "io": "输入：3    输出：16",
+      "solution": "#include <stdio.h>\n\n#define SQUARE(x) ((x) * (x))\n\nint main(void)\n{\n    int a;\n    scanf(\"%d\", &a);\n    printf(\"%d\\n\", SQUARE(a + 1));\n    return 0;\n}",
+      "explain": "定义里的两层括号都不能省：外层保证整体优先，内层保证参数不被算术运算拆开。如果写成 #define SQUARE(x) x*x，SQUARE(a+1) 展开成 a+1*a+1 = 7 而不是 16。",
+      "tests": [
+        {
+          "input": "3\n",
+          "expect": "16"
+        },
+        {
+          "input": "0\n",
+          "expect": "1"
+        },
+        {
+          "input": "4\n",
+          "expect": "25"
+        }
+      ]
+    }
+  ]
+}

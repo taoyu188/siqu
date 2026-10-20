@@ -1,0 +1,18 @@
+{
+  "_comment": "规则草稿：补完 title/why/fix/taunt 后用 --add 启用",
+  "rules": [
+    {
+      "id": "auto-01",
+      "pattern": "assignment to expression with array type",
+      "title": "（待填）这个错误是什么",
+      "why": "（待填）为什么会发生",
+      "fix": "（待填）怎么改",
+      "taunt": "（待填）她的一句话",
+      "_from": {
+        "fingerprint": "error: assignment to expression with array type",
+        "count": 5,
+        "sample": "D:\\Dev-Cpp\\homework\\Hello si.c:4:10: error: assignment to expression with array type"
+      }
+    }
+  ]
+}
